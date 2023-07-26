@@ -65,12 +65,61 @@ Com os Crawlers corretamente definidos e rodando, torna-se possível realizar co
 As perguntas que tentei responder foram:
 
 1. Quais são os clientes com as maiores posições em cada um dos Tickers das Ações ?
+
+```
+with renda_variavel as (
+	select concat_ws(' ', "first_name", "last_name") as customer
+    	,product
+    	,value
+	from "current_wallet"
+	where REGEXP_LIKE(product, '^[A-Z]{4}[0-9]+$')
+),
+customer_ranking as (
+	select * 
+		,row_number() over (partition by product order by value desc) as ticker_rank
+	from renda_variavel
+)
+select *
+from customer_ranking
+where ticker_rank = 1
+```
+
 ![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query1.png)
 
 2. Quais os clientes que mais realizarem eventos no mês de Junho de 2023 ? Foram mais eventos de Compra ou Venda ?
 ![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query2.png)
 
+```
+with events as (
+select 
+    date_trunc('month', date_parse("date",'%Y-%m-%d')) as month,
+    concat_ws(' ', "first_name", "last_name") as customer,
+    count("event") as number_of_events,
+    count(if("event" = 'buy',"event",null)) as number_of_purchases,
+    count(if("event" = 'sell',"event",null)) as number_of_sellings
+from "wallet_events"
+group by 1, 2
+)
+select * from events where "month" = date_parse('2023-06-01','%Y-%m-%d') order by number_of_events desc
+```
+
 3. Em quais meses mais entraram clientes na nossa plataforma ?
+
+```
+with events as (
+select 
+    concat_ws(' ', "first_name", "last_name") as customer,
+    min(date_trunc('month', date_parse("date",'%Y-%m-%d'))) as first_month
+from "wallet_events"
+group by 1
+)
+select
+    first_month,
+    count(distinct customer) as new_customers
+from events 
+group by first_month
+```
+
 ![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query3.png)
 
 
