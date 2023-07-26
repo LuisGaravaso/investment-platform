@@ -87,7 +87,6 @@ where ticker_rank = 1
 ![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query1.png)
 
 2. Quais os clientes que mais realizarem eventos no mês de Junho de 2023 ? Foram mais eventos de Compra ou Venda ?
-![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query2.png)
 
 ```
 with events as (
@@ -102,6 +101,8 @@ group by 1, 2
 )
 select * from events where "month" = date_parse('2023-06-01','%Y-%m-%d') order by number_of_events desc
 ```
+
+![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query2.png)
 
 3. Em quais meses mais entraram clientes na nossa plataforma ?
 
