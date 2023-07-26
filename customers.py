@@ -110,7 +110,7 @@ class Customer:
                 'first_name': self.first_name,
                 'last_name': self.last_name,
                 'city': self.city,
-                'current_wallet': item
+                'product': item
             }
             structured_data.append(data)
             
