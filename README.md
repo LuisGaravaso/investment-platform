@@ -46,10 +46,10 @@ Os arquivos:
 
 Ao rodar o script principal, dois arquivos `.json` serão gerados:
 - `wallet_events.json`: Tabela com os eventos realizados por todos os usuários
-![Events](https://github.com/LuisGaravaso/investment-platform/assets/44078988/bcaa2b31-71fa-488d-9591-1607d831e6c6)
+![Events](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Events.png)
 
 - `current_wallet.json`: Tabela com a carteira atual dos usuários
-![CurrentWallet](https://github.com/LuisGaravaso/investment-platform/assets/44078988/afeb284c-f487-4b00-be70-919b372c34c5)
+![CurrentWallet](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/CurrentWallet.png)
 
 # Outras Entregas do Desafio
 
@@ -58,10 +58,19 @@ Ao rodar o script principal, dois arquivos `.json` serão gerados:
 Depois que os arquivos foram enviados com sucesso para o S3, é necessário entrar no AWS e criar dois Crawlers para extração do Schema das tabelas:
 ![image](https://github.com/LuisGaravaso/investment-platform/assets/44078988/3ac7a313-478d-4387-89d2-e1a2816aa5f2)
 
-## AWS Athen
+## AWS Athena
 
 Com os Crawlers corretamente definidos e rodando, torna-se possível realizar consultas no AWS Athena.
+
 As perguntas que tentei responder foram:
 
+1. Quais são os clientes com as maiores posições em cada um dos Tickers das Ações ?
+![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query1.png)
+
+2. Quais os clientes que mais realizarem eventos no mês de Junho de 2023 ? Foram mais eventos de Compra ou Venda ?
+![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query2.png)
+
+3. Em quais meses mais entraram clientes na nossa plataforma ?
+![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/Query3.png)
 
 
