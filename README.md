@@ -56,7 +56,7 @@ Ao rodar o script principal, dois arquivos `.json` serão gerados:
 ## AWS Glue
 
 Depois que os arquivos foram enviados com sucesso para o S3, é necessário entrar no AWS e criar dois Crawlers para extração do Schema das tabelas:
-![image](https://github.com/LuisGaravaso/investment-platform/assets/44078988/3ac7a313-478d-4387-89d2-e1a2816aa5f2)
+![image](https://github.com/LuisGaravaso/investment-platform/blob/main/readme_files/AWSGlue.png)
 
 ## AWS Athena
 
