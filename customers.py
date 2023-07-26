@@ -105,12 +105,13 @@ class Customer:
         
     def export_current_wallet(self):
         structured_data = []
-        for item in self.current_wallet:
+        for item, value in self.current_wallet.items():
             data = {
                 'first_name': self.first_name,
                 'last_name': self.last_name,
                 'city': self.city,
-                'product': item
+                'product': item,
+                'value': value
             }
             structured_data.append(data)
             

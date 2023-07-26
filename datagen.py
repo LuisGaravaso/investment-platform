@@ -7,13 +7,13 @@ from faker import Faker
 fake = Faker('pt_BR')
 
 def data2json(customer_list:list, data_method:str, filename:str):
-    data = []
     for customer in customer_list:
         func = getattr(customer, data_method)
-        data.extend(func())
+        customer_data = func()
         
-    with open(f"{filename}.json", "w") as f:
-        json.dump(data, f)
+        for data in customer_data:
+            with open(f"{filename}.json", "a") as f:
+                f.write(json.dumps(data) + '\n')
     
 def json2s3(filename:str, main_bucket:str, subfolders:str = None):
     
