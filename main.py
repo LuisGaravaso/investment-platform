@@ -30,5 +30,3 @@ for customer in customer_list:
 wallet_events = []
 for customer in customer_list:
     wallet_events.extend(customer.export_wallet_events())
-    
-print(current_wallets[:20])
